@@ -7,6 +7,7 @@ alias kittyconf="nvim ~/.config/kitty/kitty.conf"
 alias pacman="sudo pacman"
 alias defaults="nvim ~/.config/mimeapps.list"
 alias lsfiles='for f in *; do [[ -f "$f" ]] && ls -- "$f"; done' 
+alias vim='nvim'
 
 function projects() {
 	root='/home/stelly/Documents/Projects'
