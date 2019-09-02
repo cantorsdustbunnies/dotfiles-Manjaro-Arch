@@ -11,6 +11,7 @@ alias vim='nvim'
 alias git_ls='git ls-tree --full-tree -r --name-only HEAD'
 alias gls='git ls-files'
 alias profile='nvim ~/.profile'
+alias home='cd ~/'
 
 function projects() {
 	root='/home/stelly/Documents/Projects'
@@ -136,7 +137,8 @@ function ls_shortcuts(){
     echo "  gls          |      |   A  |    macro    |  list all files tracked by git";
 	echo "  gtktheme     |      |   A  |    edit     |  /usr/share/theme/Adapta...-Maia/gtk-2.0/colors-dark.rc";
 	echo "  hello-gatsby | name |   F  |    macro    |  gatsby new name hello starter, gatsby-dev";          
-	echo "  i3config     |      |   A  |    edit     |  ~/.i3/config";
+	echo "  home         |      |   A  |    macro    |  cd ~/";
+    echo "  i3config     |      |   A  |    edit     |  ~/.i3/config";
 	echo "  kittyconf    |      |   A  |    edit     |  ~/.config/kitty/kitty.conf"; 
 	echo "  ls_shortcuts |      |   F  |    helper   |  list all shortcuts... but you knew that already ;)"; 
 	echo "  pacman       | pkg  |   A  |    helper   |  sudo pacman pkg";
