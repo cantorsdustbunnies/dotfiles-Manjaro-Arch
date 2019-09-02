@@ -9,6 +9,8 @@ alias defaults="nvim ~/.config/mimeapps.list"
 alias lsfiles='for f in *; do [[ -f "$f" ]] && ls -- "$f"; done' 
 alias vim='nvim'
 alias git_ls='git ls-tree --full-tree -r --name-only HEAD'
+alias gls='git ls-files'
+alias profile='nvim ~/.profile'
 
 function projects() {
 	root='/home/stelly/Documents/Projects'
