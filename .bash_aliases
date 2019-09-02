@@ -22,9 +22,26 @@ function projects() {
 		mkdir -p $root/$year/$month && 
 		cd $root/$year/$month 
 	fi
-	clear 
-	echo "in a sea of symbols and signs..."
-	ls -a
+	clear; 
+	echo "in a sea of symbols and signs...";
+	ls -a;
+}
+
+function notes(){
+    parent=${PWD##*/}
+    file="${parent}-notes.md";
+    if [[ ! -e $file ]]; then
+        touch $file
+        echo "#${parent} notes" >> $file; 
+        echo "---" >> $file;
+        echo "" >> $file; 
+        echo "" >> $file; 
+    fi
+    echo "> $(date)" >> $file; 
+    echo "---" >> $file; 
+    echo "" >> $file; 
+    echo "" >> $file; 
+    nvim '+ normal GA' $file
 }
 
 function journal() {
