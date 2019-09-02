@@ -158,7 +158,8 @@ function ls_shortcuts(){
     echo "  i3config     |      |   A  |    edit     |  ~/.i3/config";
 	echo "  kittyconf    |      |   A  |    edit     |  ~/.config/kitty/kitty.conf"; 
 	echo "  ls_shortcuts |      |   F  |    helper   |  list all shortcuts... but you knew that already ;)"; 
-	echo "  pacman       | pkg  |   A  |    helper   |  sudo pacman pkg";
+    echo "  notes        |      |   F  |    edit     |  create/edit a notes file in current directory";      
+    echo "  pacman       | pkg  |   A  |    helper   |  sudo pacman pkg";
     echo "  profile      |      |   A  |    edit     |  ~/.profile";
 	echo "  projects     |      |   F  |    helper   |  ~/Documents/Projects/\$year/\$month/ && ls -a"; 
 	echo "  shortcuts    |      |   A  |    edit-r   |  ~/.bash_aliases";
