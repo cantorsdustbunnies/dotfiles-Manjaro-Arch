@@ -138,5 +138,6 @@ function ls_shortcuts(){
 	echo "  projects     |      |   F  |    helper   |  ~/Documents/Projects/\$year/\$month/ && ls -a"; 
 	echo "  shortcuts    |      |   A  |    edit-r   |  ~/.bash_aliases";
 	echo "  vimrc        |      |   A  |    edit     |  ~/.vimrc";
-	echo "-------------------------------------------------------------------------------------------------";  
+    echo "  vim          |      |   A  |    helper   |  launch nvim instead of vim";
+    echo "-------------------------------------------------------------------------------------------------";  
 }
