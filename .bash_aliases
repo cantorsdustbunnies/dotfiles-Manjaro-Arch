@@ -132,15 +132,20 @@ function ls_shortcuts(){
 	echo "  defaults     |      |   A  |    edit     |  ~/.config/mimeapps.list";
 	echo "  dev-time     |      |   F  |    i3-macro |  launch dev workspace";
 	echo "  gatsby-dev   | dir  |   F  |    macro    |  code, chrome and gatsby-develop dir";
+    echo "  git_ls       |      |   A  |    macro    |  list all commited files tracked by git";
+    echo "  gls          |      |   A  |    macro    |  list all files tracked by git";
 	echo "  gtktheme     |      |   A  |    edit     |  /usr/share/theme/Adapta...-Maia/gtk-2.0/colors-dark.rc";
 	echo "  hello-gatsby | name |   F  |    macro    |  gatsby new name hello starter, gatsby-dev";          
 	echo "  i3config     |      |   A  |    edit     |  ~/.i3/config";
 	echo "  kittyconf    |      |   A  |    edit     |  ~/.config/kitty/kitty.conf"; 
 	echo "  ls_shortcuts |      |   F  |    helper   |  list all shortcuts... but you knew that already ;)"; 
 	echo "  pacman       | pkg  |   A  |    helper   |  sudo pacman pkg";
+    echo "  profile      |      |   A  |    edit     |  ~/.profile";
 	echo "  projects     |      |   F  |    helper   |  ~/Documents/Projects/\$year/\$month/ && ls -a"; 
 	echo "  shortcuts    |      |   A  |    edit-r   |  ~/.bash_aliases";
 	echo "  vimrc        |      |   A  |    edit     |  ~/.vimrc";
     echo "  vim          |      |   A  |    helper   |  launch nvim instead of vim";
     echo "-------------------------------------------------------------------------------------------------";  
+    
 }
+
