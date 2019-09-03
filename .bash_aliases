@@ -151,6 +151,7 @@ function ls_shortcuts(){
 	echo "  defaults     |      |   A  |    edit     |  ~/.config/mimeapps.list";
 	echo "  dev-time     |      |   F  |    i3-macro |  launch dev workspace";
 	echo "  gatsby-dev   | dir  |   F  |    macro    |  code, chrome and gatsby-develop dir";
+    echo "  gca          |      |   A  |    macro    |  'git commit -a'";      
     echo "  git_ls       |      |   A  |    macro    |  list all commited files tracked by git";
     echo "  gls          |      |   A  |    macro    |  list all files tracked by git";
 	echo "  gtktheme     |      |   A  |    edit     |  /usr/share/theme/Adapta...-Maia/gtk-2.0/colors-dark.rc";
