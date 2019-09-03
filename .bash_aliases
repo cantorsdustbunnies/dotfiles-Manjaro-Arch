@@ -10,8 +10,9 @@ alias lsfiles='for f in *; do [[ -f "$f" ]] && ls -- "$f"; done'
 alias vim='nvim'
 alias git_ls='git ls-tree --full-tree -r --name-only HEAD'
 alias gls='git ls-files'
+alias gca='git commit -a'
 alias profile='nvim ~/.profile'
-alias home='cd ~/'
+alias home='cd ~/ && clear'
 
 function projects() {
 	root='/home/stelly/Documents/Projects'
