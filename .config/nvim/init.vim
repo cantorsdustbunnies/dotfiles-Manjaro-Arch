@@ -10,8 +10,15 @@ set shiftwidth=4		    " width for autoindents
 set autoindent			    " indent a new line the same amount as the line just typed
 set number			        " add line numbers
 set wildmode=longest,list	" get bash-like tab completions
+set number relativenumber   " show line number for current line, relative around
 set cc=80			        " set an 80 column border for good style
 filetype plugin indent on	" allows auto-indenting depending on file type
 syntax on			        " syntax highlighting
-tnoremap <Esc> <C-\><C-n>
+
+
+
+
+
+" Easier mappings for faster travel
+tnoremap <Esc> <C-\><C-n>   
 
