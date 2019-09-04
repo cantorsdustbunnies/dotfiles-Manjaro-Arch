@@ -25,8 +25,8 @@ function projects() {
 		cd $root/$year/$month 
 	fi
 	clear; 
-	echo -e "\e[1;35mIn a sea of symbols and signs....\e[0m";
-    ls;
+	echo -e "\e[1;35mIn a sea of symbols and signs....";
+    ls --color=auto;
 }
 
 function notes(){
