@@ -33,7 +33,7 @@ function notes(){
     file="${parent}-notes.md";
     if [[ ! -e $file ]]; then
         touch $file
-        echo "#${parent} notes" >> $file; 
+        echo "# ${parent} notes" >> $file; 
         echo "---" >> $file;
         echo "" >> $file; 
         echo "" >> $file; 
