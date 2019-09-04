@@ -14,6 +14,7 @@ alias gca='git commit -a'
 alias profile='nvim ~/.profile'
 alias home='cd ~/ && clear'
 alias zshrc="nvim ~/.zshrc && source ~/.zshrc"
+alias nvimrc="nvim ~/.nvimrc"
 
 function projects() {
 	root='/home/stelly/Documents/Projects'
@@ -162,6 +163,7 @@ function ls_shortcuts(){
 	echo "  kittyconf    |      |   A  |    edit     |  ~/.config/kitty/kitty.conf"; 
 	echo "  ls_shortcuts |      |   F  |    helper   |  list all shortcuts... but you knew that already ;)"; 
     echo "  notes        |      |   F  |    edit     |  create/edit a notes file in current directory";      
+    echo "  nvimrc       |      |   A  |    edit     |  ~/.nvimrc
     echo "  pacman       | pkg  |   A  |    helper   |  sudo pacman pkg";
     echo "  profile      |      |   A  |    edit     |  ~/.profile";
 	echo "  projects     |      |   F  |    helper   |  ~/Documents/Projects/\$year/\$month/ && ls -a"; 
