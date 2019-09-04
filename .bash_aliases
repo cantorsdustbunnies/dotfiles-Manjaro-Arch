@@ -13,6 +13,7 @@ alias gls='git ls-files'
 alias gca='git commit -a'
 alias profile='nvim ~/.profile'
 alias home='cd ~/ && clear'
+alias zshrc="nvim ~/.zshrc && source ~/.zshrc"
 
 function projects() {
 	root='/home/stelly/Documents/Projects'
@@ -167,6 +168,7 @@ function ls_shortcuts(){
 	echo "  shortcuts    |      |   A  |    edit-r   |  ~/.bash_aliases";
 	echo "  vimrc        |      |   A  |    edit     |  ~/.vimrc";
     echo "  vim          |      |   A  |    helper   |  launch nvim instead of vim";
+    echo "  zshrc        |      |   A  |    edit     |  ~/.bashrc and reload"; 
     echo "-------------------------------------------------------------------------------------------------";  
     
 }
