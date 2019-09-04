@@ -15,9 +15,16 @@ set cc=80			        " set an 80 column border for good style
 filetype plugin indent on	" allows auto-indenting depending on file type
 syntax on			        " syntax highlighting
 
-
-
-
+" netrw config
+let g:netrw_banner=0       " Hide help banner
+let g:netrw_liststyle=3    " Use tree view
+let g:netrw_winsize=10     " smaller default window size
+let g:netrw_altv=1         " splits to the left
+let g:netrw_browse_split=4 " 
+augroup ProjectDrawer
+    autocmd!
+    autocmd VimEnter * if argc() == 0 | :VExplore | endif
+augroup END
 
 " Easier mappings for faster travel
 tnoremap <Esc> <C-\><C-n>   
