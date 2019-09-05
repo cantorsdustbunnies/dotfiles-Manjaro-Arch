@@ -25,9 +25,11 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'Rigellute/shades-of-purple.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 call plug#end()
 
 " general settings
+set nocompatible
 set nobackup
 set nowritebackup
 set noswapfile
@@ -86,10 +88,15 @@ vnoremap <C-A> ggVGG
 " Ctrl + C to xclip
 vnoremap <C-c> "+y
 
-" use markdown with vimwiki
+" vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
-" indentLine
+" vim_markdown_preview
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 1
+let g:mkdp_browser = 'surf'
+
+" indentLine/
 let g:indentLine_char = '┊'
 
 " vim-airline
