@@ -15,6 +15,9 @@ alias profile='nvim ~/.profile'
 alias home='cd ~/ && clear'
 alias zshrc="nvim ~/.zshrc && source ~/.zshrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
+alias ta="task add"
+alias tl="clear && task list"
+
 
 function projects() {
 	root='/home/stelly/Documents/Projects'
