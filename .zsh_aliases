@@ -1,7 +1,7 @@
 alias bashrc="nvim ~/.bashrc && source ~/.zshrc" # edit bashrc and reload
 alias vimrc="nvim ~/.vimrc" #edit vimrc 
 alias i3config="nvim ~/.i3/config"
-alias shortcuts="nvim ~/.zsh_aliases && source ~/.zshrc && echo ~~~>>> GOTTA GO FAST" #edit aliases and reload 
+alias shortcuts="nvim ~/.zsh_aliases && source ~/.zshrc"  
 alias gtktheme="sudo nvim /usr/share/theme/Adapta-Nokto-Eta-Maia/gtk-2.0/colors-dark.rc"
 alias kittyconf="nvim ~/.config/kitty/kitty.conf"
 alias pacman="sudo pacman"

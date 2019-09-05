@@ -89,12 +89,14 @@ vnoremap <C-A> ggVGG
 vnoremap <C-c> "+y
 
 " vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'css_name': 'darkdown.css', 'syntax': 'markdown', 'ext': '.md'}]
+
 
 " vim_markdown_preview
 let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 let g:mkdp_browser = 'surf'
+" let g:mkdp_highlight_css = '/home/stelly/vimwiki/darkdown.css'
 
 " indentLine/
 let g:indentLine_char = '┊'
@@ -112,10 +114,10 @@ let NERDTreeShowHidden = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " nerdcommenter
-let g:NERDSpaceDelims = 1
-nnoremap <C-_> :call NERDComment('Toggle', 'Toggle')<CR>
-inoremap <C-_> <esc>:call NERDComment('Toggle', 'Toggle')<CR>
-vnoremap <C-_> :call NERDComment('Toggle', 'Toggle')<CR>gv
+" let g:NERDSpaceDelims = 1
+" nnoremap <C-_> :call NERDComment('Toggle', 'Toggle')<CR>
+" inoremap <C-_> <esc>:call NERDComment('Toggle', 'Toggle')<CR>
+" vnoremap <C-_> :call NERDComment('Toggle', 'Toggle')<CR>gv
 
 " gitgutter
 let g:gitgutter_override_sign_column_highlight = 0

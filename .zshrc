@@ -1,4 +1,4 @@
-source $HOME/.bash_aliases
+source $HOME/.zsh_aliases
 source /usr/share/nvm/init-nvm.sh
 export ZSH="/home/stelly/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
