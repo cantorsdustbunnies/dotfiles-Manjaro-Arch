@@ -24,6 +24,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'Rigellute/shades-of-purple.vim'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " general settings
@@ -84,6 +85,9 @@ vnoremap <C-A> ggVGG
 
 " Ctrl + C to xclip
 vnoremap <C-c> "+y
+
+" use markdown with vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " indentLine
 let g:indentLine_char = '┊'
