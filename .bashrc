@@ -153,3 +153,5 @@ HISTFILE=~/.bash_eternal_history
 # force prompt to write history after every command 
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 source /usr/share/nvm/init-nvm.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

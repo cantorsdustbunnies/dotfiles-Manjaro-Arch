@@ -17,3 +17,6 @@ source $ZSH/oh-my-zsh.sh
 
 export HISTSIZE="100000000"
 export SAVEHIST=$HISTSIZE
+export MYVIMRC=$HOME/.config/nvim/init.vim
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
