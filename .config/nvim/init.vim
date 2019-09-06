@@ -1,4 +1,4 @@
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim')) 
     silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync
@@ -26,6 +26,11 @@ Plug 'xolox/vim-colorscheme-switcher'
 Plug 'Rigellute/shades-of-purple.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'kyoz/purify', { 'rtp': 'vim' }
+Plug 'epilande/vim-react-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 " general settings
@@ -59,12 +64,35 @@ filetype plugin on
 "     augroup END
 " endif
 " colorscheme onedark
-" 
-syntax enable
-colorscheme shades_of_purple
+
+hi Normal guibg=NONE ctermbg=NONE
+
+
+"let g:purify_override_colors = {
+    "\ 'pink': {'gui': '#FDFEFF', 'cterm': '231' }, 
+    "\ 'green': {'gui': '#FF0874', 'cterm': '199' },
+    "\ 'yellow': {'gui': '#0ABDC6', 'cterm': '123'}, 
+    "\ 'salmon': {'gui': '#D00B5A', 'cterm': '196'}, 
+    "\ 'red': {'gui': '#00FF00', 'cterm': '34'}, 
+    "\ 'blue': {'gui': '#4D8BEE', 'cterm': '123'}, 
+    "\ 'purple': {'gui': '#390979', 'cterm': '52'}, 
+    "\ 'black': {'gui': '#23D5C', 'cterm': '62'}, 
+    "\ 'white': {'gui': '#FF33FF', 'cterm': '72'}, 
+    "\ 'dark_yellow': {'gui': '#FF33FF', 'cterm': '82'}, 
+    "\ 'comment_grey': {'gui': '#FF33FF', 'cterm': '92'}, 
+    "\ 'cursor_grey': {'gui': '#FF33FF', 'cterm': '102'}, 
+    "\ 'gutter_grey_fg': {'gui': '#FF33FF', 'cterm': '112'}, 
+    "\ 'blur_grey': {'gui': '#FF33FF', 'cterm': '122'}, 
+    "\ 'menu_grey': {'gui': '#FF33FF', 'cterm': '132'}, 
+    "\ 'visual_grey': {'gui': '#FF33FF', 'cterm': '142'}, 
+    "\ 'visual_black': {'gui': '#FF33FF', 'cterm': '152'}, 
+"\ }
+
+syntax on 
+" colorscheme shades_of_purple
+colorscheme purify 
 
 " make transparency work
-hi Normal guibg=NONE ctermbg=NONE
 " mappings
 let mapleader=','
 
@@ -93,7 +121,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/', 'css_name': 'darkdown.css', 'syntax
 
 
 " vim_markdown_preview
-let g:mkdp_auto_start = 1
+" let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 let g:mkdp_browser = 'surf'
 " let g:mkdp_highlight_css = '/home/stelly/vimwiki/darkdown.css'
@@ -103,7 +131,8 @@ let g:indentLine_char = '┊'
 
 " vim-airline
 let g:shades_of_purple_airline = 1
-let g:airline_theme='shades_of_purple'
+" let g:airline_theme='shades_of_purple'
+let g:airline_theme='purify'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
