@@ -1,9 +1,14 @@
+" vim:fileencoding=utf-8:foldmethod=marker
+
+": AutoLoad VimPlugged {{{
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim')) 
     silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync
 endif
+" }}}
 
+": VimPlugged Plugins{{{
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'lambdalisue/vim-manpager'
@@ -31,25 +36,38 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'epilande/vim-react-snippets'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-call plug#end()
+Plug 'junegunn/goyo.vim'
+Plug 'tpope/vim-surround'
+Plug 'kshenoy/vim-signature', 
+call plug#end()"}}}
 
-" general settings
+": Set's{{{
 set nocompatible
 set nobackup
 set nowritebackup
 set noswapfile
-set number
+set number relativenumber
 set mouse=a
 set shiftwidth=4
 set expandtab
 set tabstop=4
 set softtabstop=4
 set nowrap
-set cursorline
+" set cursorline
+set cursorcolumn
 set termguicolors
 set hidden
-" syntax enable
+" }}}
+
+": Color Scheme {{{
 filetype plugin on
+hi Normal guibg=NONE ctermbg=NONE
+" hi EndOfBuffer ctermfg=235
+syntax on
+colorscheme purify 
+" }}}
+
+": OLD THEME onedark config{{{
 " set guicursor=n-v-c-sm:ver25-blinkon0,i-ci-ve:ver25,r-cr-o:hor20
 
 " onedark colorscheme
@@ -64,10 +82,9 @@ filetype plugin on
 "     augroup END
 " endif
 " colorscheme onedark
+" }}}
 
-hi Normal guibg=NONE ctermbg=NONE
-
-
+": OLD purify overide colors{{{
 "let g:purify_override_colors = {
     "\ 'pink': {'gui': '#FDFEFF', 'cterm': '231' }, 
     "\ 'green': {'gui': '#FF0874', 'cterm': '199' },
@@ -87,13 +104,9 @@ hi Normal guibg=NONE ctermbg=NONE
     "\ 'visual_grey': {'gui': '#FF33FF', 'cterm': '142'}, 
     "\ 'visual_black': {'gui': '#FF33FF', 'cterm': '152'}, 
 "\ }
+" }}}
 
-syntax on 
-" colorscheme shades_of_purple
-colorscheme purify 
-
-" make transparency work
-" mappings
+": Mappings{{{
 let mapleader=','
 
 nnoremap <Leader>nn : NERDTreeToggle<cr>
@@ -101,7 +114,7 @@ nnoremap <C-L> :call BNext()<CR>
 inoremap <C-L> <esc>:call BNext()<CR>
 nnoremap <C-H> :call BPrev()<CR>
 inoremap <C-H> <esc>:call BPrev()<CR>
-nnoremap <C-D> :bp\|bd #<CR>
+nnoremap <Leader><C-D> :bp\|bd #<CR>
 inoremap <C-D> <esc>:bp\|bd #<CR>
 nnoremap <C-S> :w<CR>
 vnoremap <C-S> <esc>:w<CR>
@@ -112,49 +125,56 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap <C-A> ggVGG
 vnoremap <C-A> ggVGG
-
 " Ctrl + C to xclip
-vnoremap <C-c> "+y
+vnoremap <C-c> "+y 
+" }}}
 
-" vimwiki
+": VimWiki Config{{{
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'css_name': 'darkdown.css', 'syntax': 'markdown', 'ext': '.md'}]
+" }}}
 
-
-" vim_markdown_preview
+": Vim Markdown Preview Config{{{
+" uncomment below to auto-start surf when editing markdown files
 " let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 let g:mkdp_browser = 'surf'
 " let g:mkdp_highlight_css = '/home/stelly/vimwiki/darkdown.css'
+" }}}
 
-" indentLine/
+": Indent Line{{{
 let g:indentLine_char = '┊'
+" }}}
 
-" vim-airline
+": Vim-Airline Config{{{
 let g:shades_of_purple_airline = 1
-" let g:airline_theme='shades_of_purple'
 let g:airline_theme='purify'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" }}}
 
-" nerdtree
+": NerdTree Config{{{
 let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
 let NERDTreeShowHidden = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" }}}
 
+": DISABLED NerdCommenter Settings{{{
 " nerdcommenter
 " let g:NERDSpaceDelims = 1
 " nnoremap <C-_> :call NERDComment('Toggle', 'Toggle')<CR>
 " inoremap <C-_> <esc>:call NERDComment('Toggle', 'Toggle')<CR>
 " vnoremap <C-_> :call NERDComment('Toggle', 'Toggle')<CR>gv
+" }}}
 
-" gitgutter
+": GitGutter Settings{{{
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_sign_added                     = '+'
 let g:gitgutter_sign_modified                  = '±'
 let g:gitgutter_sign_removed                   = '-'
 let g:gitgutter_sign_removed_first_line        = '×'
 let g:gitgutter_sign_modified_removed          = '×'
+" }}}
 
 " vim-tags
 let g:vim_tags_auto_generate = 1
@@ -162,7 +182,7 @@ let g:vim_tags_auto_generate = 1
 " FZF
 nnoremap <silent> <C-p> :call FZFOpen(':FZF')<CR>
 
-" vim-devicons
+": Vim-DevIcons Settings{{{
 let g:DevIconsEnableFoldersOpenClose = 1
 
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
@@ -185,8 +205,10 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['webpack\.'] = 'ﰩ'
 
 let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 1
+" }}}
 
-" coc
+": COC Settings{{{
+
 "inoremap <silent><expr> <TAB>
     "\ pumvisible() ? "\<C-n>" :
     "\ <SID>check_back_space() ? "\<TAB>" :
@@ -207,30 +229,17 @@ let g:coc_global_extensions = [
     \ 'coc-emmet',
     \ 'coc-css',
     \ 'coc-python'
-\ ]
-
-" coc_snippets 
-
-" Make <TAB> the trigger for completion
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<TAB>'
+\ ]"
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+"}}}
 
+
+": Misc Functions and Remaps{{{
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -266,3 +275,4 @@ function! FZFOpen(command_str)
   endif
   exe 'normal! ' . a:command_str . "\<cr>"
 endfunction
+" }}}
