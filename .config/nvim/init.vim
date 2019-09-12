@@ -10,11 +10,13 @@ endif
 
 ": VimPlugged Plugins{{{
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'jparise/vim-graphql'
 Plug 'airblade/vim-gitgutter'
 Plug 'lambdalisue/vim-manpager'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'joshdick/onedark.vim'
@@ -38,10 +40,14 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-surround'
-Plug 'kshenoy/vim-signature', 
+Plug 'kshenoy/vim-signature',
+Plug 'nerdypepper/agila.vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'haishanh/night-owl.vim'
+Plug 'cocopon/iceberg.vim'
 call plug#end()"}}}
 
-": Set's{{{
+ ": Set's{{{
 set nocompatible
 set nobackup
 set nowritebackup
@@ -53,18 +59,23 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set nowrap
+set noshowmode
 " set cursorline
-set cursorcolumn
+" set cursorcolumn
 set termguicolors
 set hidden
 " }}}
 
-": Color Scheme {{{
+": Color Scheme {{{ 
 filetype plugin on
-hi Normal guibg=NONE ctermbg=NONE
 " hi EndOfBuffer ctermfg=235
-syntax on
-colorscheme purify 
+syntax enable 
+" colorscheme purify
+colorscheme agila
+" colorscheme iceberg
+hi Folded ctermbg=NONE guibg=NONE
+hi Normal guibg=NONE ctermbg=NONE
+
 " }}}
 
 ": OLD THEME onedark config{{{
@@ -147,10 +158,19 @@ let g:indentLine_char = '┊'
 
 ": Vim-Airline Config{{{
 let g:shades_of_purple_airline = 1
-let g:airline_theme='purify'
+let g:airline_theme='zenburn'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-" }}}
+"if (has("autocmd") && !has("gui_running"))
+    "augroup colorset
+        "autocmd!
+        "let s:N3 = [ "#390979", "#ABB2BF", 241, 'NONE'  ]
+        "autocmd ColorScheme * call purify#set_highlight("Normal, {"bg": s:N3 })
+    "augroup END
+"endif
+
+
+ " }}}
 
 ": NerdTree Config{{{
 let NERDTreeMinimalUI = 1
@@ -176,11 +196,20 @@ let g:gitgutter_sign_removed_first_line        = '×'
 let g:gitgutter_sign_modified_removed          = '×'
 " }}}
 
+" Prettier
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
 " vim-tags
 let g:vim_tags_auto_generate = 1
 
 " FZF
-nnoremap <silent> <C-p> :call FZFOpen(':FZF')<CR>
+nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
+
+
+"nnoremap <silent> <C-p> :call FZFOpen(':FZF')<CR>
+
+
 
 ": Vim-DevIcons Settings{{{
 let g:DevIconsEnableFoldersOpenClose = 1
@@ -251,6 +280,9 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Turn on syntax highlighting for bat test files
+autocmd BufNewFile,BufRead *.bat set syntax=sh
+
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -276,3 +308,5 @@ function! FZFOpen(command_str)
   exe 'normal! ' . a:command_str . "\<cr>"
 endfunction
 " }}}
+
+

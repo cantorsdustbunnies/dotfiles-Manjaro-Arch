@@ -1,3 +1,5 @@
+export PATH="$HOME/scripts/sh:$PATH"
+alias testit='cd ~/tests/'
 alias bashrc='nvim ~/.bashrc && source ~/.zshrc' # edit bashrc and reload
 alias vimrc='nvim ~/.vimrc' #edit vimrc 
 alias i3config='nvim ~/.i3/config'
@@ -18,13 +20,14 @@ alias nvimrc='nvim ~/.config/nvim/init.vim'
 alias ta='task add'
 alias tl='clear && task list'
 alias fzf='fzf --layout=reverse-list'
+#::  
+#: Marks 
 alias s='clear && cd ~/scripts/ && ls'
-alias ss='s && cd sh && vim .'
-alias sp='s && cd python && vim .' 
-#source ~/scripts/sh/lolban.sh
-#source ~/scripts/sh/loltime.sh
-source ~/scripts/sh/sourcefile.sh
-
+alias shs='s && cd sh && vim .'
+alias cdss='s && cd sh && ls' 
+alias sp='s && cd python && vim .'
+alias cdsp='s && cd python && ls' 
+# change keymap
 
 function projects() {
 	root='/home/stelly/Documents/Projects'
@@ -38,6 +41,13 @@ function projects() {
 	clear; 
 	echo -e "\e[1;35mIn a sea of symbols and signs....";
     ls --color=auto;
+}
+
+function touchp() {
+    arg=$1
+    num_of_dirs=$(grep -o "/" <<< $arg | wc -l)
+    make_dirs=$(echo $arg | cut -d / -f1-$num_of_dirs)
+    mkdir -p $make_dirs && touch $arg 
 }
 
 function notes(){
@@ -78,18 +88,23 @@ function journal() {
     nvim '+ normal GA' $file	
 }
 
-gatsby-dev() {
-	project_dir=$1
-	cd $project_dir
-	code . 
-	google-chrome-stable --new-window http://localhost:8000/___graphql
-	google-chrome-stable http://localhost:8000/ 
-	gatsby develop
-}
+# gatsby-dev() {
+	#project_dir=$1
+	#cd $project_dir
+	#code . 
+	#google-chrome-stable --new-window http://localhost:8000/___graphql
+	#google-chrome-stable http://localhost:8000/ 
+	#gatsby develop
+#}
 
 function hello-gatsby(){
 	new_project=$1
 	gatsby new $new_project https://github.com/gatsbyjs/gatsby-starter-hello-world && gatsby-dev $new_project 
+}
+
+function gatsby-hello-world(){
+    new_project=$1
+    gatsby new $new_project https://github.com/gatsbyjs/gatsby-starter-hello-world && cd $new_project
 }
 
 function dev-time(){
@@ -185,3 +200,5 @@ function ls_shortcuts(){
     
 }
 
+
+alias doit=/home/stelly/Documents/Projects/2019/September/stelly_dot_dev/site
