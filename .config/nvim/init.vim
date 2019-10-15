@@ -10,6 +10,8 @@ endif
 
 ": VimPlugged Plugins{{{
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'PhilRunninger/nerdtree-visual-selection'
+Plug 'wallysslima/agua'
 Plug 'jparise/vim-graphql'
 Plug 'airblade/vim-gitgutter'
 Plug 'lambdalisue/vim-manpager'
@@ -45,6 +47,10 @@ Plug 'nerdypepper/agila.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'haishanh/night-owl.vim'
 Plug 'cocopon/iceberg.vim'
+Plug 'leanprover/lean.vim'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins'}
+Plug 'StanAngeloff/php.vim'
+Plug '2072/PHP-Indenting-for-VIm'
 call plug#end()"}}}
 
  ": Set's{{{
@@ -73,8 +79,9 @@ syntax enable
 " colorscheme purify
 colorscheme agila
 " colorscheme iceberg
-hi Folded ctermbg=NONE guibg=NONE
-hi Normal guibg=NONE ctermbg=NONE
+" colorscheme agua
+" hi Folded ctermbg=NONE guibg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
 
 " }}}
 
@@ -138,7 +145,16 @@ nnoremap <C-A> ggVGG
 vnoremap <C-A> ggVGG
 " Ctrl + C to xclip
 vnoremap <C-c> "+y 
-" }}}
+ " }}}
+
+": Language Client Config (For Lean)
+let g:LanguageClient_autostart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'lean': ['lean-language-server', '--stdio'], 
+    \ }
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 
 ": VimWiki Config{{{
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'css_name': 'darkdown.css', 'syntax': 'markdown', 'ext': '.md'}]
@@ -156,11 +172,11 @@ let g:mkdp_browser = 'surf'
 let g:indentLine_char = '┊'
 " }}}
 
-": Vim-Airline Config{{{
-let g:shades_of_purple_airline = 1
-let g:airline_theme='zenburn'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+"": Vim-Airline Config{{{
+"let g:shades_of_purple_airline = 1
+"let g:airline_theme='zenburn'
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
 "if (has("autocmd") && !has("gui_running"))
     "augroup colorset
         "autocmd!
@@ -270,7 +286,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 ": Misc Functions and Remaps{{{
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <leader> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

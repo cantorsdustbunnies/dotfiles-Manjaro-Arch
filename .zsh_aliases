@@ -1,4 +1,7 @@
 export PATH="$HOME/scripts/sh:$PATH"
+alias zshtheme='nvim ~/.oh-my-zsh/themes/stelly-tmux.zsh-theme'
+alias tmuxrc='nvim ~/.tmux.conf'
+alias cat='bat'
 alias testit='cd ~/tests/'
 alias bashrc='nvim ~/.bashrc && source ~/.zshrc' # edit bashrc and reload
 alias vimrc='nvim ~/.vimrc' #edit vimrc 
@@ -20,16 +23,47 @@ alias nvimrc='nvim ~/.config/nvim/init.vim'
 alias ta='task add'
 alias tl='clear && task list'
 alias fzf='fzf --layout=reverse-list'
-#::  
-#: Marks 
 alias s='clear && cd ~/scripts/ && ls'
 alias shs='s && cd sh && vim .'
 alias cdss='s && cd sh && ls' 
 alias sp='s && cd python && vim .'
 alias cdsp='s && cd python && ls' 
-# change keymap
 
-function projects() {
+alias pacs='pacman -Ss'
+
+
+
+
+zenmode_on(){
+    clear; 
+    printf '\x1b]11;black\x1b\\'
+}
+
+zenmode_off(){
+    clear; 
+    printf '\x1b]11;#1a1e24\x1b\\'
+}
+
+
+mvAll() {
+    if [[ -d $1 ]]; then 
+      sudo mv `ls -A | grep -v $1` $1
+    fi
+}
+
+
+mdv() {
+    docker run --rm -v $PWD:/sandbox  -w /sandbox -it rawkode/mdv:latest $@
+}
+
+
+ctrl_c(){
+    echo "Exiting Program"
+    exit
+}
+
+
+projects() {
 	root='/home/stelly/Documents/Projects'
 	year=$(date +%Y)
 	month=$(date +%B)
@@ -43,14 +77,14 @@ function projects() {
     ls --color=auto;
 }
 
-function touchp() {
+touchp() {
     arg=$1
     num_of_dirs=$(grep -o "/" <<< $arg | wc -l)
     make_dirs=$(echo $arg | cut -d / -f1-$num_of_dirs)
     mkdir -p $make_dirs && touch $arg 
 }
 
-function notes(){
+notes(){
     parent=${PWD##*/}
     file="${parent}-notes.md";
     if [[ ! -e $file ]]; then
@@ -67,7 +101,7 @@ function notes(){
     nvim '+ normal GA' $file
 }
 
-function journal() {
+journal() {
 	root='/home/stelly/Documents/Projects'
 	year=$(date +%Y)
 	month=$(date +%B)
@@ -97,22 +131,22 @@ function journal() {
 	#gatsby develop
 #}
 
-function hello-gatsby(){
+hello-gatsby(){
 	new_project=$1
-	gatsby new $new_project https://github.com/gatsbyjs/gatsby-starter-hello-world && gatsby-dev $new_project 
+	gatsby new $new_project https://github.com/gatsbyjs/gatsby-starter-hello-world 
 }
 
-function gatsby-hello-world(){
+gatsby-hello-world(){
     new_project=$1
     gatsby new $new_project https://github.com/gatsbyjs/gatsby-starter-hello-world && cd $new_project
 }
 
-function dev-time(){
+dev-time(){
 	project_dir=$1
 	
 }
 
-function list-pictures(){
+list-pictures(){
 	#first lets just echo out the file and the count 
 	count=0
 	for file in $(lsfiles)
@@ -129,7 +163,7 @@ function list-pictures(){
 	done
 }
 
-function batch-rename-pictures(){
+batch-rename-pictures(){
     firstFlag=$1
     secondFlag=$2
     thirdFlag=$3
@@ -152,7 +186,7 @@ function batch-rename-pictures(){
 }	
 
 
-function command_workspace(){
+command_workspace(){
 	i3-msg "workspace 3;
 	split horizontal;
 	exec i3-sensible-terminal -e gotop;"
@@ -170,7 +204,7 @@ function command_workspace(){
 	#i3-msg "focus left; exec i3-sensible-terminal"
 }
 
-function ls_shortcuts(){
+ls_shortcuts(){
 	echo " ------------------------------------------------------------------------------------------------";	
 	echo "    shortcut   | args | type |    action   |            Affected Files / Description              "; 
 	echo " ------------------------------------------------------------------------------------------------";
