@@ -28,7 +28,7 @@ alias shs='s && cd sh && vim .'
 alias cdss='s && cd sh && ls' 
 alias sp='s && cd python && vim .'
 alias cdsp='s && cd python && ls' 
-
+alias update='sudo pacman -Syyuu'
 alias pacs='pacman -Ss'
 
 
