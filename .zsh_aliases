@@ -31,7 +31,9 @@ alias cdsp='s && cd python && ls'
 alias update='sudo pacman -Syyuu'
 alias pacs='pacman -Ss'
 
-
+code(){
+  i3-swallow code . -w
+}
 
 
 zenmode_on(){
