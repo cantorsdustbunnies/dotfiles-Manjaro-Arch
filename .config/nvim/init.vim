@@ -10,96 +10,87 @@ endif
 
 ": VimPlugged Plugins{{{
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'PhilRunninger/nerdtree-visual-selection'
-Plug 'wallysslima/agua'
+
+": Color Schemes {{{
+"Plug 'wallysslima/agua' " `The Beautiful vim theme no color scheme.`
+"Plug 'joshdick/onedark.vim' "['#282C34', '#E06C75', '#98C379', '#E5C07B', '#61AFEF', '#C678DD', '#56B6C2', '#ABB2BF' ]
+"Plug 'kyoz/purify', { 'rtp': 'vim' } " ['#FF6059', '#5FFF87','#5FAFFF', '#FFFF87', '#FF79C6', '#FF875F', '#AF87FF','#D19A66']
+Plug 'nerdypepper/agila.vim' " #favorite
+"Plug 'haishanh/night-owl.vim' " 24-bit 
+"Plug 'cocopon/iceberg.vim' " templateable with cocopon/pgmnt.vim -- 256 color blue
+"}}}
+
+" : Syntax & Formatting{{{
+Plug 'justinmk/vim-sneak'
 Plug 'jparise/vim-graphql'
-Plug 'airblade/vim-gitgutter'
-Plug 'lambdalisue/vim-manpager'
-Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+Plug 'w0rp/ale' " Asynchronous Lint Engine for NeoVim
+Plug 'sheerun/vim-polyglot'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins'}
+"  
+" JS / JSX
+"
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+"Plug 'epilande/vim-react-snippets' // Don't think I use this
+"Plug 'pangloss/vim-javascript'
+"Plug 'mxw/vim-jsx' // DEPRICATED
+"
+" LEAN
+"
+"Plug 'leanprover/lean.vim'
+"
+" PHP 
+"
+"Plug 'StanAngeloff/php.vim'
+"Plug '2072/PHP-Indenting-for-VIm'
+"
+"}}}
+
+": Apperance{{{
+"
+": Airline{{{
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
+"}}}
+Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
-Plug 'joshdick/onedark.vim'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
-Plug 'szw/vim-tags'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-surround' 
+Plug 'junegunn/goyo.vim'
+Plug 'kshenoy/vim-signature' " place, toggle and display marks 
+ "}}}
+
+": Utilities{{{
+
+" // NERDTREE
+Plug 'scrooloose/nerdtree'
+Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
-Plug 'flazz/vim-colorschemes'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-colorscheme-switcher'
-Plug 'Rigellute/shades-of-purple.vim'
+" // FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+" // OTHERS
+Plug 'szw/vim-tags'
+" }}}
+
+": SIDE-EFFECTS {{{
+Plug 'lambdalisue/vim-manpager'
 Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
-Plug 'kyoz/purify', { 'rtp': 'vim' }
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'epilande/vim-react-snippets'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'junegunn/goyo.vim'
-Plug 'tpope/vim-surround'
-Plug 'kshenoy/vim-signature',
-Plug 'nerdypepper/agila.vim'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'haishanh/night-owl.vim'
-Plug 'cocopon/iceberg.vim'
-Plug 'leanprover/lean.vim'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins'}
-Plug 'StanAngeloff/php.vim'
-Plug '2072/PHP-Indenting-for-VIm'
-call plug#end()"}}}
+ "}}}
 
- ": Set's{{{
-set nocompatible
-set nobackup
-set nowritebackup
-set noswapfile
-set number relativenumber
-set mouse=a
-set shiftwidth=4
-set expandtab
-set tabstop=4
-set softtabstop=4
-set nowrap
-set noshowmode
-" set cursorline
-" set cursorcolumn
-set termguicolors
-set hidden
-" }}}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-colorscheme-switcher'
+call plug#end() 
+"}}}
 
 ": Color Scheme {{{ 
 filetype plugin on
-" hi EndOfBuffer ctermfg=235
 syntax enable 
-" colorscheme purify
 colorscheme agila
-" colorscheme iceberg
-" colorscheme agua
-" hi Folded ctermbg=NONE guibg=NONE
-" hi Normal guibg=NONE ctermbg=NONE
-
-" }}}
-
-": OLD THEME onedark config{{{
-" set guicursor=n-v-c-sm:ver25-blinkon0,i-ci-ve:ver25,r-cr-o:hor20
-
-" onedark colorscheme
-" let g:onedark_terminal_italics=1
-" let g:onedark_termcolors=256
-" let g:onedark_hide_endofbuffer=1
-" if (has("autocmd") && !has("gui_running"))
-"     augroup colorset
-"         autocmd!
-"         let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16": "7" }
-"         autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white })
-"     augroup END
-" endif
-" colorscheme onedark
 " }}}
 
 ": OLD purify overide colors{{{
@@ -156,7 +147,10 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 
-": VimWiki Config{{{
+": Vim-sneak Config
+let g:sneak#label = 1
+
+":  VimWiki Config{{{
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'css_name': 'darkdown.css', 'syntax': 'markdown', 'ext': '.md'}]
 " }}}
 
@@ -173,19 +167,7 @@ let g:indentLine_char = '┊'
 " }}}
 
 "": Vim-Airline Config{{{
-"let g:shades_of_purple_airline = 1
-"let g:airline_theme='zenburn'
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#enabled = 1
-"if (has("autocmd") && !has("gui_running"))
-    "augroup colorset
-        "autocmd!
-        "let s:N3 = [ "#390979", "#ABB2BF", 241, 'NONE'  ]
-        "autocmd ColorScheme * call purify#set_highlight("Normal, {"bg": s:N3 })
-    "augroup END
-"endif
-
-
+let g:airline_theme='bubblegum'
  " }}}
 
 ": NerdTree Config{{{
@@ -193,14 +175,6 @@ let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
 let NERDTreeShowHidden = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" }}}
-
-": DISABLED NerdCommenter Settings{{{
-" nerdcommenter
-" let g:NERDSpaceDelims = 1
-" nnoremap <C-_> :call NERDComment('Toggle', 'Toggle')<CR>
-" inoremap <C-_> <esc>:call NERDComment('Toggle', 'Toggle')<CR>
-" vnoremap <C-_> :call NERDComment('Toggle', 'Toggle')<CR>gv
 " }}}
 
 ": GitGutter Settings{{{
@@ -214,6 +188,8 @@ let g:gitgutter_sign_modified_removed          = '×'
 
 " Prettier
 let g:prettier#autoformat = 0
+let g:prettier#quickfix_enabled = 0
+let g:prettier#quickfix_auto_focus = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 " vim-tags
@@ -221,11 +197,6 @@ let g:vim_tags_auto_generate = 1
 
 " FZF
 nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
-
-
-"nnoremap <silent> <C-p> :call FZFOpen(':FZF')<CR>
-
-
 
 ": Vim-DevIcons Settings{{{
 let g:DevIconsEnableFoldersOpenClose = 1
@@ -239,7 +210,6 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['yaml'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['yml'] = ''
-
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*vimrc.*'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.gitignore'] = ''
@@ -247,25 +217,11 @@ let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['package.json'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['package.lock.json'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['node_modules'] = ''
 let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['webpack\.'] = 'ﰩ'
-
 let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 1
 " }}}
 
 ": COC Settings{{{
-
-"inoremap <silent><expr> <TAB>
-    "\ pumvisible() ? "\<C-n>" :
-    "\ <SID>check_back_space() ? "\<TAB>" :
-    "\ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"function! s:check_back_space() abort
-    "let col = col('.') - 1
-    "return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
-
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 let g:coc_global_extensions = [
     \ 'coc-json',
@@ -282,7 +238,6 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 "}}}
-
 
 ": Misc Functions and Remaps{{{
 " Use K to show documentation in preview window
@@ -325,4 +280,22 @@ function! FZFOpen(command_str)
 endfunction
 " }}}
 
-
+ ": Set's{{{
+set nocompatible
+set nobackup
+set nowritebackup
+set noswapfile
+set number relativenumber
+set mouse=a
+set shiftwidth=2
+set expandtab
+set tabstop=2
+set softtabstop=2
+set nowrap
+set noshowmode
+set smarttab
+set smartindent
+set autoindent
+set termguicolors
+set hidden
+" }}}
