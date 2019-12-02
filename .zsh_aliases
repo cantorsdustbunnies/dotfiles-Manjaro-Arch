@@ -30,11 +30,16 @@ alias sp='s && cd python && vim .'
 alias cdsp='s && cd python && ls' 
 alias update='sudo pacman -Syyuu'
 alias pacs='pacman -Ss'
-
+alias work='clear && cd ~/Documents/Projects/2019/Work'
 code(){
   i3-swallow code . -w
 }
 
+# checks for a package.json
+# if it's there gives you a readout of the scripts
+ls_scripts(){
+  jq .scripts -C package.json | cat 
+}
 
 zenmode_on(){
     clear; 
