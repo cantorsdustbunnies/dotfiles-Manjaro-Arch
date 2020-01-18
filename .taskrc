@@ -12,7 +12,7 @@
 
 # Files
 data.location=~/.task
-color.vit.selection=color1 on white
+color.vit.selection=color38 on color234 
 # Color theme (uncomment one to use)
 #include /usr/share/doc/task/rc/light-16.theme
 #include /usr/share/doc/task/rc/light-256.theme
@@ -29,3 +29,8 @@ include /usr/share/doc/task/rc/dark-violets-256.theme
 #include /usr/share/doc/task/rc/solarized-light-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
+taskd.server=freecinc.com:53589
+taskd.key=\/home\/stelly\/.task\/freecinc_0b01e8e0.key.pem
+taskd.certificate=\/home\/stelly\/.task\/freecinc_0b01e8e0.cert.pem
+taskd.ca=\/home\/stelly\/.task\/freecinc_0b01e8e0.ca.pem
+taskd.credentials=FreeCinc\/freecinc_0b01e8e0\/4f6440e9-1803-43aa-925b-aad902036ca3

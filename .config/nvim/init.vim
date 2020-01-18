@@ -11,6 +11,9 @@ endif
 ": VimPlugged Plugins{{{
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'Sirver/ultisnips'
+Plug 'Konfekt/vim-alias'
+Plug 'lambdalisue/suda.vim'
 ": Color Schemes {{{
 "Plug 'wallysslima/agua' " `The Beautiful vim theme no color scheme.`
 "Plug 'joshdick/onedark.vim' "['#282C34', '#E06C75', '#98C379', '#E5C07B', '#61AFEF', '#C678DD', '#56B6C2', '#ABB2BF' ]
@@ -27,7 +30,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale' " Asynchronous Lint Engine for NeoVim
 Plug 'sheerun/vim-polyglot'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins'}
+"Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins'}
 "  
 " JS / JSX
 "
@@ -138,14 +141,20 @@ vnoremap <C-A> ggVGG
 vnoremap <C-c> "+y 
  " }}}
 
+let g:UltiSnipsExpandTrigger="<M-q>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+let g:UltiSnipsEditSplit="vertical"
+let g:suda#prefix = 'suda://' 
+let g:suda_smart_edit = 1 
 ": Language Client Config (For Lean)
-let g:LanguageClient_autostart = 1
-let g:LanguageClient_serverCommands = {
-    \ 'lean': ['lean-language-server', '--stdio'], 
-    \ }
+"let g:LanguageClient_autostart = 1
+"let g:LanguageClient_serverCommands = {
+    "\ 'lean': ['lean-language-server', '--stdio'], 
+    "\ }
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+"nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+"nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 
 ": Vim-sneak Config
 let g:sneak#label = 1
@@ -299,3 +308,14 @@ set autoindent
 set termguicolors
 set hidden
 " }}}
+
+
+if exists('s:loaded_vimafter')
+  silent doautocmd VimAfter VimEnter *
+else
+  let s:loaded_vimafter = 1
+  augroup VimAfter
+    autocmd!
+    autocmd VimEnter * source ~/.config/nvim/after/init.vim
+  augroup END
+endif

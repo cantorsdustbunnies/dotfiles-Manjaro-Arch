@@ -30,3 +30,5 @@ export MYVIMRC=$HOME/.config/nvim/init.vim
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
